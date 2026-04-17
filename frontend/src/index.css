@@ -1,0 +1,354 @@
+body, html, #root {
+  background-color: #020617; 
+  color: #f8fafc;
+  margin: 0;
+  padding: 0;
+  overflow: hidden; 
+  /* "Sans-serif" fallback ensures a clean font on all devices */
+  font-family: 'Inter', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+button, input, textarea, select {
+  font-family: inherit;
+}
+
+body, html, #root {
+  background-color: #020617; 
+  color: #f8fafc;
+  margin: 0;
+  padding: 0;
+  overflow: hidden; 
+}
+
+/* Canvas Layout */
+.pipeline-canvas-wrapper {
+  width: 100vw;
+  height: 100vh;
+  background-color: #020617;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Background Grid Customization */
+.react-flow__pane {
+  background: transparent !important; 
+}
+
+.react-flow__background {
+  z-index: -1;
+  display: block !important;
+  opacity: 1 !important;
+}
+
+.react-flow__background-pattern.dots {
+  fill: #475569 !important; 
+}
+
+/* Main Toolbar Styling */
+.toolbar-container {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  padding: 10px 20px;
+  background: #0f172a; 
+  border-bottom: 1px solid #334155;
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 100;
+}
+
+.toolbar-nodes-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.toolbar-node {
+  background: #1e293b;
+  color: #94a3b8;
+  border: 1px solid #334155;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: grab;
+  transition: all 0.2s;
+}
+
+.toolbar-node:hover {
+  background: #312e81;
+  color: #e0e7ff;
+  border-color: #6366f1;
+}
+
+.clear-btn {
+  background: #ef4444;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: opacity 0.2s;
+}
+
+.clear-btn:hover {
+  opacity: 0.9;
+}
+
+/* Standardized Node Styling */
+.pipeline-node {
+  width: 200px; 
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+  transition: border-color 0.2s ease;
+}
+
+.pipeline-node:hover {
+  border-color: #6366f1;
+}
+
+.node-header {
+  padding: 10px 14px;
+  border-bottom: 1px solid #334155;
+  font-weight: 600;
+  font-size: 14px;
+  color: #818cf8;
+  border-radius: 12px 12px 0 0;
+}
+
+.node-content-wrapper {
+  padding: 3px;
+  display: flex;
+  flex-direction: column;
+  min-width: 150px;
+}
+
+/* Form Elements within Nodes */
+.node-textarea, .node-input, select {
+  width: 100%;
+  box-sizing: border-box;
+  background: #0f172a;
+  border: 1px solid #334155;
+  color: #f1f5f9;
+  padding: 8px;
+  border-radius: 6px;
+  font-size: 13px;
+  resize: none;
+  overflow: hidden;
+}
+
+/* React Flow MiniMap Customization */
+.react-flow__minimap {
+  background-color: #0b0f1a !important; 
+  border: 1px solid #334155 !important;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+}
+
+.react-flow__minimap-mask {
+  fill: rgba(30, 41, 59, 0.6) !important; 
+}
+
+/* Floating Legend Grid */
+.legend-container {
+  position: absolute;
+  bottom: 20px; 
+  left: 80px; 
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid #334155;
+  padding: 12px;
+  border-radius: 8px;
+  z-index: 100;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 12px 20px; 
+  pointer-events: none; 
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 10px; 
+  color: #cbd5e1;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  white-space: nowrap; 
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+/* Bottom Submit Button */
+.submit-container {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: transparent !important;
+  border: none !important;
+  z-index: 10;
+}
+
+.submit-btn {
+  background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+  color: white;
+  padding: 12px 30px;
+  border-radius: 9999px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
+  transition: all 0.3s ease; /* Smooths the hover effect */
+  outline: none;
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px); /* Lifts the button slightly */
+  box-shadow: 0 0 30px rgba(168, 85, 247, 0.6); /* Increases the neon glow */
+  filter: brightness(1.1); /* Makes the colors pop more */
+}
+
+.submit-btn:active {
+  transform: translateY(1px); /* Sinks the button when clicked */
+}
+
+.modal-overlay {
+  /* This pulls it out of the bottom bar and onto the whole screen */
+  position: fixed !important; 
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  
+  /* This centers the content perfectly */
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  
+  background: rgba(2, 6, 23, 0.85);
+  z-index: 9999; /* Higher than Legend and MiniMap */
+}
+
+/* --- index.css Updates for 2b Modal --- */
+
+.modal-content {
+  background: #0f172a;
+  border: 1px solid #334155;
+  border-radius: 16px;
+  /* 2b Implementation: Significant internal padding for a "framed" look */
+  padding: 40px; 
+  width: 320px;
+  text-align: center;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), 0 0 20px rgba(99, 102, 241, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: modalFadeIn 0.3s ease-out;
+}
+
+.modal-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #f1f5f9;
+  margin-bottom: 24px;
+}
+
+/* 2b Grid Layout: Standardizes alignment for Nodes, Edges, and DAG */
+.modal-stats-grid {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.stat-row {
+  display: flex;
+  justify-content: space-between; /* Pushes labels to left, values to right */
+  align-items: center;
+  font-size: 14px;
+}
+
+.stat-label {
+  color: #94a3b8;
+  font-weight: 500;
+}
+
+.stat-value {
+  color: #f8fafc;
+  font-weight: 700;
+  font-family: 'JetBrains Mono', monospace; /* Professional look for metrics */
+}
+
+/* Minimal divider requested for the professional 2b look */
+.modal-divider-minimal {
+  height: 1px;
+  background: #334155;
+  margin: 6px 0;
+  width: 100%;
+}
+
+.text-success { color: #22c55e; }
+.text-danger { color: #ef4444; }
+
+.modal-close-btn {
+  background: #1e293b;
+  color: #cbd5e1;
+  border: 1px solid #334155;
+  padding: 10px 30px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.modal-close-btn:hover {
+  background: #334155;
+  color: white;
+}
+
+/* --- Toast Notification (2b Slide-in) --- */
+
+.toast-notification {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: #0f172a;
+  border: 1px solid #334155;
+  border-radius: 12px;
+  /* 2b Padding: Consistent internal gutter */
+  padding: 16px 24px;
+  z-index: 10000;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  animation: toastSlideIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.toast-notification.success { border-left: 4px solid #22c55e; }
+.toast-notification.error { border-left: 4px solid #ef4444; }
+
+.toast-content {
+  font-size: 13px;
+  font-weight: 600;
+  color: #f8fafc;
+  display: flex;
+  gap: 12px;
+  white-space: nowrap;
+}
+
+@keyframes toastSlideIn {
+  from { transform: translateX(120%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes modalFadeIn {
+  from { transform: translateY(-20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
